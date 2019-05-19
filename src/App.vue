@@ -49,7 +49,15 @@
               <span slot="title">商品管理</span>
             </template>
             <el-menu-item index="2-1" @click="$router.push('/goodsType')">商品类别列表</el-menu-item>
-            <el-menu-item index="2-2">商品列表</el-menu-item>
+            <el-menu-item index="2-2" @click="$router.push('/goods')">商品列表</el-menu-item>
+          </el-submenu>
+
+          <el-submenu index="3">
+            <template slot="title">
+              <i class="el-icon-s-grid"></i>
+              <span slot="title">广告</span>
+            </template>
+            <el-menu-item index="3-1" @click="$router.push('/advLog')">广告列表</el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>

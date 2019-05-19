@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import admin from "./admin";
 import goods from './goods'
 import shop from './shop'
-
+import adv from './adv'
 Vue.use(Router)
 
 export default new Router({
@@ -12,6 +12,7 @@ export default new Router({
   routes: [
     ...admin,
     ...shop,
-    ...goods
+    ...goods,
+    ...adv
   ]
 })

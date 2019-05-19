@@ -1,0 +1,66 @@
+获取商品类别接口
+方式：get
+地址： http://127.0.0.1/getGoodsTypeList
+返回值：
+    getGoodsTypeList:[
+        goodsTypeList: (8) [{
+            addTime: (...)
+            goodsTypeHref: (...)
+            goodsTypeLogo: (...)
+            goodsTypeName: (...)
+            _id: (...)
+        }, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+        msg: "获取成功"
+        ok: 1
+    ]
+
+获取商品借口
+方式： get
+地址：http:/127.0.0.1/getGoodsList
+    可以传递查询的商品类别 goodsTypeId 
+	返回值
+	goodsList: [
+		{
+            _id: (...)
+            goodsName: (...)  //商品名称
+            goodsLogo: (...) //商品logo图
+            goodsType: (...)  //商品类别ID
+            goodsNewPrice: (...)  //商品新价格
+            goodsOldPrice: (...)  // 旧价格
+            goodsScore: (...)     //评分
+            goodsSold: (...)        //商品销量
+            goodsSupportNum: (...)   //商品支持
+            goodsIntroduction: (...)    //商品介绍
+            module: (...)               //商品分区
+            shopActivities: (...)     //店铺活动
+            shopName: (...)          //店铺名称
+            shopNotices: (...)      //店铺公告
+            shopShowNum: (...)     //店铺总的商品数量
+            addTime: (...)    //添加时间
+        }		
+	msg: "获取成功"
+	ok: 1，
+	pageIndex: 1
+	pageSum: 1
+}
+
+
+
+//获取广告的借口
+方式： get
+地址： http://127.0.0.1/getAdvList
+可以查询传递广告类别
+返回值
+{
+    advList: [{
+        addTime: (...)
+        advName: (...)
+        advPic: (...)
+        advType: (...)
+        _id: (...)
+    }, {…}]
+    ok: 1
+    pageIndex: 1
+    pageSum: 1
+}
+

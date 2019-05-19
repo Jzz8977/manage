@@ -2,7 +2,8 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import market from './market'
 import admin from './admin'
-
+import goods from './goods'
+import adv from './adv'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
@@ -31,6 +32,8 @@ export default new Vuex.Store({
     },
     modules:{
         market,
-        admin
+        admin,
+        goods,
+        adv
     }
 })

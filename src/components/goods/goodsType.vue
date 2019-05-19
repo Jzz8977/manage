@@ -1,34 +1,47 @@
 <template>
     <div>
         <div class="toolbar">
-            商品类别
+            <el-form  :inline="true"  class="demo-form-inline">
+                <el-form-item label="管理员">
+                    <el-input  placeholder="请输入要搜索的管理员"></el-input>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" >查询</el-button>
+                </el-form-item>
+                <el-form-item>
+                    <el-button type="primary" @click="dialogFormVisible=true" >添加商品</el-button>
+                </el-form-item>
+            </el-form>
         </div>
-        <!-- <el-table
+        <el-table
                 v-loading="$store.state.isLoading"
                 :data="$store.state.goods.goodsTypeList"
                 :border="true"
                 style="width: 100%">
             <el-table-column
                     label="商品类别id"
-                    width="250">
+                    width="200">
                 <template slot-scope="scope">
                     <span style="margin-left: 10px">{{ scope.row._id }}</span>
                 </template>
             </el-table-column>
             <el-table-column
-                    label="商品类别名称">
+                    label="商品类别名称"
+                    width="100">
                 <template slot-scope="scope">
                     <span style="margin-left: 10px">{{ scope.row.goodsTypeName }}</span>
                 </template>
             </el-table-column>
             <el-table-column
-                    label="商品类别ICONFONT">
+                    label="商品类别ICONFONT"
+                    width="150">
                 <template slot-scope="scope">
                     <span style="margin-left: 10px">{{ scope.row.goodsTypeLogo }}</span>
                 </template>
             </el-table-column>
             <el-table-column
-                    label="商品类别链接">
+                    label="商品类别链接"
+                    width="160">
                 <template slot-scope="scope">
                     <span style="margin-left: 10px">{{ scope.row.goodsTypeHref }}</span>
                 </template>
@@ -45,12 +58,12 @@
                     <el-button
                             size="mini"
                             type="primary"
-                    >添加店铺</el-button>
+                            @click="dialogFormVisible=true"
+                    >添加商品</el-button>
                 </template>
             </el-table-column>
-        </el-table> -->
+        </el-table>
 
-        <!-- <pageInfo actionsName="getGoodsTypeList" ></pageInfo> -->
         <!--<div class="toolbar">-->
             <!--<el-pagination-->
                     <!--background-->
@@ -61,10 +74,7 @@
             <!--&gt;-->
             <!--</el-pagination>-->
         <!--</div>-->
-
-
-
-
+        <addGoods :visible.sync="dialogFormVisible"></addGoods>
 
     </div>
 </template>
@@ -82,18 +92,20 @@
 
         },
         beforeMount(){
-            this.$store.dispatch("getGoodsTypeList",{
-                pageIndex:1
-            })
+           
         },
         mounted(){
-            this.$store.commit("SET_INIT");
-            console.log(1)
+             this.$store.dispatch("getGoodsTypeList",{
+                pageIndex:1
+            })
+            console.log(1);
             
         }
     }
 </script>
 
 <style lang="scss" scoped>
-
+.toolbar{
+    background:#EBEEF5;
+}
 </style>
