@@ -36,7 +36,7 @@
       </el-table-column>
       <el-table-column label="广告图片" width="150">
         <template slot-scope="scope">
-          <img width="50px" :src="'http://127.0.0.1/'+ scope.row.advPic">
+          <img width="50px" :src="$store.state.config.url + scope.row.advPic">
         </template>
       </el-table-column>
       <el-table-column label="操作">

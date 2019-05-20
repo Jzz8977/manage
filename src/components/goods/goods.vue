@@ -18,7 +18,7 @@
       </el-table-column>
       <el-table-column label="商品Logo" width="150">
         <template slot-scope="scope">
-          <img width="100px"  :src="'http://127.0.0.1/'+ scope.row.goodsLogo" alt="">
+          <img width="100px"  :src="$store.state.config.url+ scope.row.goodsLogo" alt="">
         </template>
       </el-table-column>
       <el-table-column label="商品类别ID" width="100">
@@ -85,7 +85,7 @@ export default {
       moduleArr:["无","尝鲜","上新","经典"]
     };
   },
-  mounted() {
+  created() {
     this.$store.dispatch("getGoodsList", {
       pageIndex: 1
     });

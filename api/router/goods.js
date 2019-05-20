@@ -2,7 +2,7 @@ const db = require('../module/db')
 const { getPageList } = require('../module/common')
 const { upPic } = require("../module/upPic");
 const formidable = require("formidable");
-
+const mongodb = require('mongodb')
 //添加商品类别
 module.exports.addGoodsType = function (req, res) {
     console.log(req.body)
@@ -21,10 +21,14 @@ module.exports.addGoodsType = function (req, res) {
 
 module.exports.goodsTypeList = function (req, res) {
     var goodsTypeId = req.query.goodsTypeId || "";
+    // var goodsName = req.query.search || "";
     var whereObj = {};
     if(goodsTypeId.length > 0){
         whereObj.goodsTypeId = new RegExp(goodsTypeId);
     }
+    // if(goodsName.length>0){
+    //     whereObj.goodsName = new RegExp(goodsName);
+    // }
     db.find('goodsTypeList', {
         sortObj:{
             addTime:-1
@@ -81,11 +85,27 @@ module.exports.addGoods = function (req, res) {
 
 //获取商品列表
 module.exports.getGoodsList = function(req,res){
+    var goodsTypeId =  req.query.Id || "";
+    var goodsName = req.query.search || "";
+    var goodsModule = req.query.module/1 || 0;
+    var whereObj = {};
+    if(goodsTypeId.length > 0){
+        //根据商品类别iD查找
+        whereObj.goodsTypeId = mongodb.ObjectId(goodsTypeId);
+    }
+    if(goodsName.length>0){
+        // 根据商品名查找
+        whereObj.goodsName = new RegExp(goodsName);
+    }
+    if(goodsModule>0){
+        //根据分区查找
+        whereObj.module = goodsModule;
+    }
     var pageIndex = req.query.pageIndex/1;
         var limitNum=5;
         db.count("goodsList",{},function (count) {
             db.find("goodsList",{
-                // whereObj,
+                whereObj,
                 limitNum,
                 skipNum:(pageIndex-1)*limitNum,
                 sortObj:{loginTime:-1}

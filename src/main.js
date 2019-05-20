@@ -9,6 +9,7 @@ import filters from "@/filters";
 import axios from 'axios'
 import components from "./components"
 
+
 Vue.use(components);
 
 Vue.config.productionTip = false
@@ -25,6 +26,7 @@ axios.interceptors.request.use(config => {
   }
   return config;
 })
+
 // 过滤接收的数据
 axios.interceptors.response.use(({ data }) => {
   store.commit("SET_IS_LOADING", false);

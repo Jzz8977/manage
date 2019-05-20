@@ -1,4 +1,5 @@
 获取商品类别接口
+
 方式：get
 地址： http://127.0.0.1/getGoodsTypeList
 返回值：
@@ -18,8 +19,9 @@
 方式： get
 地址：http:/127.0.0.1/getGoodsList
     可以传递查询的商品类别 goodsTypeId 
-	返回值
-	goodsList: [
+    可以查询商品分区： module:[0,1,2,3，4] //无  尝鲜  上新   经典   猜你喜欢
+	返回值 
+	goodsList: [000000
 		{
             _id: (...)
             goodsName: (...)  //商品名称
@@ -49,7 +51,7 @@
 //获取广告的借口
 方式： get
 地址： http://127.0.0.1/getAdvList
-可以查询传递广告类别
+可以查询传递广告类别 advType[1,2,3,4,5] //首页的   市集的   课堂的  收藏的  我的的 
 返回值
 {
     advList: [{

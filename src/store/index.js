@@ -4,6 +4,7 @@ import market from './market'
 import admin from './admin'
 import goods from './goods'
 import adv from './adv'
+import config from './common'
 Vue.use(Vuex);
 export default new Vuex.Store({
     state:{
@@ -34,6 +35,7 @@ export default new Vuex.Store({
         market,
         admin,
         goods,
-        adv
+        adv,
+        config
     }
 })
