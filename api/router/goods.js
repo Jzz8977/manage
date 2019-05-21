@@ -19,7 +19,7 @@ module.exports.addGoodsType = function (req, res) {
     })
 }
 
-module.exports.goodsTypeList = function (req, res) {
+module.exports.getGoodsTypeList = function (req, res) {
     var goodsTypeId = req.query.goodsTypeId || "";
     // var goodsName = req.query.search || "";
     var whereObj = {};

@@ -14,12 +14,13 @@ app.get("/adminLog",admin.adminLog);
 
 /*********************添加店铺类别**********************************/
 app.post("/addShopType",shop.addShopType);
+
 app.get("/getShopTypeList",shop.getShopTypeList);
 
 //添加商品类别
 app.post('/addGoodsType',goods.addGoodsType);
 //获取商品类别
-app.get('/goodsTypeList',goods.goodsTypeList);
+app.get('/getGoodsTypeList',goods.getGoodsTypeList);
 
 //添加商品
 app.post('/addGoods',goods.addGoods);

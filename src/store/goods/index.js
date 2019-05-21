@@ -23,7 +23,7 @@ export default {
         getGoodsTypeList({ commit, rootState }, params) {
             // commit("SET_IS_LOADING",true);
             // console.log()
-            axios.get("goodsTypeList", {
+            axios.get("getGoodsTypeList", {
                 params
             })
                 .then(data => {

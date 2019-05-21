@@ -21,7 +21,7 @@
     可以传递查询的商品类别 goodsTypeId 
     可以查询商品分区： module:[0,1,2,3，4] //无  尝鲜  上新   经典   猜你喜欢
 	返回值 
-	goodsList: [000000
+	goodsList: [
 		{
             _id: (...)
             goodsName: (...)  //商品名称
