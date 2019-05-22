@@ -18,12 +18,13 @@
       </el-table-column>
       <el-table-column label="商品Logo" width="150">
         <template slot-scope="scope">
-          <img width="100px"  :src="$store.state.config.url+ scope.row.goodsLogo" alt="">
+          <img width="100px" :src="$store.state.config.url+ scope.row.goodsLogo" alt>
         </template>
       </el-table-column>
       <el-table-column label="商品类别ID" width="100">
         <template slot-scope="scope">
-          <span style="margin-left: 10px">{{ $store.state.goods.goodsTypeList.find(v=>v._id === scope.row.goodsType).goodsTypeName  }}</span>
+          <!-- <span style="margin-left: 10px">{{ $store.state.goods.goodsTypeList.find(v=>v._id === scope.row.goodsType).goodsTypeName  }}</span> -->
+          <span style="margin-left: 10px">{{ scope.row.goodsType}}</span>
         </template>
       </el-table-column>
       <el-table-column label="商品新价格" width="100">
@@ -54,11 +55,12 @@
       shopNotices: "" //公告-->
       <el-table-column label="操作">
         <template slot-scope="scope">
+          <el-button size="mini" type="danger" @click="goodsRemove(scope.row._id)">删除</el-button>
           <el-button size="mini" type="primary" @click="dialogFormVisible=true">添加商品</el-button>
         </template>
       </el-table-column>
     </el-table>
-
+    <pageInfo actionsName="getGoodsList"></pageInfo>
     <!--<div class="toolbar">-->
     <!--<el-pagination-->
     <!--background-->
@@ -80,13 +82,22 @@ export default {
     return {
       dialogFormVisible: false,
       search: "",
-      moduleArr:["无","尝鲜","上新","经典"]
+      moduleArr: ["无", "尝鲜", "上新", "经典"]
     };
   },
   created() {
     this.$store.dispatch("getGoodsList", {
       pageIndex: 1
     });
+    this.$store.commit("SET_INIT");
+  },
+  methods:{
+    goodsRemove(goodsId){
+      console.log(goodsId);
+       this.$store.dispatch("goodsRemove",{
+            goodsId
+        })
+    }
   }
 };
 </script>

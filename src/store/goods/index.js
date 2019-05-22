@@ -6,7 +6,7 @@ const state = {
 const mutations = {
     //修改goodsTypeList
     SET_GOODS_TYPE_LIST(state, goodsTypeList) {
-        state.goodsTypeList = goodsTypeList;
+        state.goodsTypeList= localStorage.goodsTypeList = goodsTypeList;
     },
     SET_GOODS_LIST(state, goodsList) {
         state.goodsList = goodsList;
@@ -40,7 +40,7 @@ export default {
                     }
                 })
         },
-        getGoodsList({commit,rootState},params) {
+        getGoodsList({commit,dispatch,rootState},params) {
             axios.get("getGoodsList", {
                 params
             })
@@ -56,6 +56,15 @@ export default {
                         })
                     }
                 })
+        },
+        goodsRemove({commit,dispatch,rootState},params){
+            axios.delete('goodsRemove',{
+                params
+            }).then(data=>{
+                dispatch('getGoodsList',{
+                    pageIndex:1
+                })
+            })
         }
     }
 }

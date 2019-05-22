@@ -31,7 +31,7 @@ module.exports.getGoodsTypeList = function (req, res) {
     // }
     db.find('goodsTypeList', {
         sortObj:{
-            addTime:-1
+            addTime:1
         },
         whereObj
     }, function (err, goodsTypeList) {
@@ -83,11 +83,13 @@ module.exports.addGoods = function (req, res) {
     })
 }
 
-//获取商品列表
+//获取分页商品列表、具有模糊搜索
 module.exports.getGoodsList = function(req,res){
-    var goodsTypeId =  req.query.Id || "";
+    var goodsTypeId =  req.query.Id || "";//类别id
+    var goodsId = req.query.goodsId || "";//商品id
     var goodsName = req.query.search || "";
-    var goodsModule = req.query.module/1 || 0;
+    var goodsModule = req.query.module || '0';
+    var limitNum = req.query.limitNum/1 || 5;
     var whereObj = {};
     if(goodsTypeId.length > 0){
         //根据商品类别iD查找
@@ -101,8 +103,10 @@ module.exports.getGoodsList = function(req,res){
         //根据分区查找
         whereObj.module = goodsModule;
     }
+    if(goodsId.length>0){
+        whereObj._id = mongodb.ObjectId(goodsId);
+    }
     var pageIndex = req.query.pageIndex/1;
-        var limitNum=5;
         db.count("goodsList",{},function (count) {
             db.find("goodsList",{
                 whereObj,
@@ -127,6 +131,18 @@ module.exports.getGoodsList = function(req,res){
         })
 }
 
+//获取商品雷彪，不具有模糊搜索
+
+//删除商品信息
+module.exports.goodsRemove = function(req,res){
+    console.log(req.query);
+    db.deleteOneById("goodsList", req.query.goodsId, function () {
+        res.json({
+            ok: 1,
+            msg: "删除成功"
+        })
+    })
+}
 
 // 获得店铺类别
 // module.exports.goodsTypeList = function (req,res) {

@@ -138,7 +138,7 @@ export default {
   data() {
     return {
       form: {
-          goodsName:"",
+        goodsName:"",
         goodsType: "", //商品类别名称
         goodsNewPrice: "",
         goodsOldPrice: "",
@@ -179,12 +179,15 @@ export default {
     addGoods() {
       this.$refs.upload.submit();
     }
-    // ,
-    // addGoods(){ //test
-    //     console.log(this.form);
-    // }
+  },
+  created(){
+    if(localStorage.goodsTypeList.length>0){
+      this.$store.dispatch("getGoodsTypeList",{pageIndex:1})
+
+    }
   }
-};
+    
+}
 </script>
 
 <style lang="scss" scoped>

@@ -24,9 +24,10 @@ app.get('/getGoodsTypeList',goods.getGoodsTypeList);
 
 //添加商品
 app.post('/addGoods',goods.addGoods);
-//获取广告
+//删除商品
+app.delete('/goodsRemove',goods.goodsRemove);
+//获取商品
 app.get("/getGoodsList",goods.getGoodsList);
-
 
 
 /*********************获取广告***************************************** */
